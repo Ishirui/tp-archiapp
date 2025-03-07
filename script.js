@@ -9,6 +9,9 @@ function updateMessages(messages) {
     li.textContent = message.msg;
     messageList.appendChild(li);
   });
+
+  // Scroll liste vers le bas
+  messageList.scrollTop = messageList.scrollHeight;
 }
 
 function addMessage() {
