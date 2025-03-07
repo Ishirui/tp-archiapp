@@ -11,7 +11,10 @@
     <div id="messageArea">
         <span id="messageAreaTop">
           <h2 class="heading">Messages</h2>
-          <button id="messageRefreshButton" onClick="updateMessages(msgs)">&#x21bb;</button> <!-- &#x21bb est le caractère unicode pour une icône de rafraîchissement -->
+          <span>
+            <input type="checkbox" id="darkModeToggle" onClick="toggleDarkMode()">Mode Sombre</input>
+            <button id="messageRefreshButton" onClick="updateMessages(msgs)">&#x21bb;</button> <!-- &#x21bb est le caractère unicode pour une icône de rafraîchissement -->
+          </span>
         </span>
           <ul id="messageList">
             <li class="messageBox">

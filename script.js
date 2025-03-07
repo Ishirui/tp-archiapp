@@ -49,4 +49,16 @@ function addMessage() {
   updateMessages(msgs);
 }
 
-// updateMessages(msgs);
+function toggleDarkMode() {
+  let body = document.body;
+  body.classList.toggle("darkMode");
+
+  let messageList = document.getElementById("messageList");
+  messageList.classList.toggle("darkMode");
+
+  let authorInputBox = document.getElementById("authorInputBox");
+  authorInputBox.classList.toggle("darkMode");
+
+  let messageInputBox = document.getElementById("messageInputBox");
+  messageInputBox.classList.toggle("darkMode");
+}
