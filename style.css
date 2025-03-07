@@ -55,7 +55,7 @@ h2.heading {
     border: 1px solid black;
     border-radius: 5px;
     padding: 1vw;
-    text-align: center;
+    text-align: left;
 }
 
 #messageInput {
@@ -72,4 +72,6 @@ h2.heading {
     height: 5vw;
     margin-right: 1vw;
     resize: none;
+    font-family: sans-serif;
+    font-size: large;
 }
