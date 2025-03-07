@@ -56,12 +56,28 @@ h2.heading {
     padding: 0;
 }
 
-.messageUsername {
+.messageMetadata {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.5vw;
+    padding: 0;
+}
+
+.messageAuthor {
     display: flex;
     align-self: start;
-    margin: 0.3vw;
+    margin: 0;
     padding: 0;
     font-weight: bold;
+    font-style: italic;
+}
+
+.messageTime {
+    display: flex;
+    align-self: end;
+    margin: 0;
+    padding: 0;
     font-style: italic;
 }
 
