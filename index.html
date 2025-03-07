@@ -14,14 +14,17 @@
             <li class="messageBox">
               <span class="messageMetadata">
                 <p class="messageAuthor">Anonymous</p>
-                <p class="messageTime">07-03-2025 16:44</p>
+                <p class="messageTime">07/03/2025 16:44:00</p>
               </span>
               <p class="messageText">Hello, world !</p>
             </li>
         </ul>
-        <span id="messageInput">
+        <span id="inputArea">
+          <textarea id="authorInputBox" placeholder="Entrez votre nom...">Anonymous</textarea>
+          <span id="messageInputArea">
             <textarea id="messageInputBox" placeholder="Entrez votre message..."> </textarea>
-            <button onClick="addMessage()">Envoyer</button>
+            <button id="messageSendButton" onClick="addMessage()">Envoyer</button>
+          </span>
         </span>
     </div>
   </body>

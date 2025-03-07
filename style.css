@@ -65,7 +65,6 @@ h2.heading {
 }
 
 .messageAuthor {
-    display: flex;
     align-self: start;
     margin: 0;
     padding: 0;
@@ -74,7 +73,6 @@ h2.heading {
 }
 
 .messageTime {
-    display: flex;
     align-self: end;
     margin: 0;
     padding: 0;
@@ -82,19 +80,37 @@ h2.heading {
 }
 
 .messageText {
-    display: flex;
     align-self: start;
-    margin: 0.3vw;
+    margin: 0.5vw;
     padding: 0;
 }
 
-#messageInput {
+#inputArea {
     display: flex;
-    align-self: end;
-    flex-grow: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
     margin: 1vw;
     margin-right: 0;
     padding: 0;
+}
+
+#authorInputBox {
+    width: 10vw;
+    height: 2vw;
+    margin-right: 1vw;
+    resize: none;
+    font-family: sans-serif;
+    font-size: large;
+    align-self: center;
+}
+
+#messageInputArea {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-self: center;
+    flex-grow: 0;
 }
 
 #messageInputBox {
@@ -104,4 +120,5 @@ h2.heading {
     resize: none;
     font-family: sans-serif;
     font-size: large;
+    align-self: end;
 }
