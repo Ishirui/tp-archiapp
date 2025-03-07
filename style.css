@@ -1,0 +1,75 @@
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: sans-serif;
+    padding: 0;
+}
+
+.heading {
+    
+    margin: 0.2vw;
+}
+
+h1.heading {
+    align-self: center;
+    color: blue;
+}
+
+#messageArea {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 1.5vw;
+    margin-right: 10vw;
+    margin-left: 10vw;
+}
+
+h2.heading {
+    align-self: left;
+    color: black;
+}
+
+#messageList {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0;
+    padding: 1vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    height: 50vh;
+    background-color: lightgray;
+    border: 2px solid black;
+    border-radius: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.messageBox {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0.5vw;
+    flex-grow: 1;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1vw;
+    text-align: center;
+}
+
+#messageInput {
+    display: flex;
+    align-self: end;
+    flex-grow: 0;
+    margin: 1vw;
+    margin-right: 0;
+    padding: 0;
+}
+
+#messageInputBox {
+    width: 50vw;
+    height: 5vw;
+    margin-right: 1vw;
+    resize: none;
+}
