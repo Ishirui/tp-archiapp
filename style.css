@@ -53,9 +53,23 @@ h2.heading {
     margin: 0.5vw;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 1vw;
-    text-align: left;
-    justify-content: center;
+    padding: 0;
+}
+
+.messageUsername {
+    display: flex;
+    align-self: start;
+    margin: 0.3vw;
+    padding: 0;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.messageText {
+    display: flex;
+    align-self: start;
+    margin: 0.3vw;
+    padding: 0;
 }
 
 #messageInput {
