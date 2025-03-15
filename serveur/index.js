@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
 // });
 
 app.get("/test/*", function (req, res) {
-  res.json({ a: 1, b: 2 });
+  res.json("Hello World !");
 });
 
 app.listen(8080); //commence à accepter les requêtes
