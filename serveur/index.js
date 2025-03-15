@@ -14,8 +14,12 @@ app.use(function (req, res, next) {
 // Ici faut faire faire quelque chose à notre app...
 // On va mettre les "routes"  == les requêtes HTTP acceptéés par notre application.
 
-app.get("/", function (req, res) {
-  res.send("Hello");
+// app.get("/", function (req, res) {
+//   res.send("Hello");
+// });
+
+app.get("/test/*", function (req, res) {
+  res.json({ a: 1, b: 2 });
 });
 
 app.listen(8080); //commence à accepter les requêtes
