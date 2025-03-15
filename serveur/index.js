@@ -19,7 +19,8 @@ app.use(function (req, res, next) {
 // });
 
 app.get("/test/*", function (req, res) {
-  res.json("Hello World !");
+  let msg = decodeURIComponent(req.url.substr(6)); // Deprecated d'après TS ?
+  res.json({ msg: msg });
 });
 
 app.listen(8080); //commence à accepter les requêtes
