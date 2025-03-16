@@ -18,6 +18,8 @@ services:
       - traefik.http.routers.tp-archiapp.tls.domains[0].main=veyrenc.xyz
       - traefik.http.routers.tp-archiapp.tls.domains[0].sans=\*.veyrenc.xyz
 
+      - traefik.http.services.tp-archiapp.loadbalancer.server.port=8080
+
     restart: always
 
 networks:
