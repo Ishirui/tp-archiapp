@@ -1,13 +1,18 @@
-msgs = [
-  {
-    author: "Anonymous",
-    time: "07-03-2025T16:44:00",
-    msg: "Hello, World!",
-  },
-];
+msgs = [];
 
-function updateMessages(messages) {
+function getMessages() {
+  fetch("/msg/getAll")
+    .then((response) => response.json())
+    .then((data) => {
+      msgs = data;
+      updateMessagesView(msgs);
+    });
+}
+
+function updateMessagesView(messages) {
   let messageList = document.getElementById("messageList");
+
+  // Pourrait être optimisé en ne rafraîchissant que les nouveaux messages
   messageList.innerHTML = "";
   messages.forEach((message) => {
     let messageTime = new Date(message.time)
@@ -48,7 +53,7 @@ function addMessage() {
     time: new Date().toISOString(),
     msg: message,
   });
-  updateMessages(msgs);
+  getMessages();
 }
 
 function toggleDarkMode() {

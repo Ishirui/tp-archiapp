@@ -75,6 +75,7 @@ app.post("/msg/add", function (req, res) {
   }
 
   // On filtre les champs inutiles éventuellement présents dans le corps de la requête.
+  // On pourrait faire un filtrage anti-XSS ici mais peut-être il vaut mieux le faire côté client ?
   allMsgs.push({ author: newMsg.author, msg: newMsg.msg, time: newMsg.time });
   res.status(201).end(); // 201 = Created
 });
