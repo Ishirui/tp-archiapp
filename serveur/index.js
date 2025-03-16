@@ -76,7 +76,7 @@ app.post("/msg/add", function (req, res) {
 
   // On filtre les champs inutiles éventuellement présents dans le corps de la requête.
   allMsgs.push({ author: newMsg.author, msg: newMsg.msg, time: newMsg.time });
-  res.status(201); // 201 = Created
+  res.status(201).end(); // 201 = Created
 });
 
 app.listen(8080); //commence à accepter les requêtes
