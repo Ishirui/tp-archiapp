@@ -11,6 +11,7 @@ services:
     ports:
       - "8080:8080"
     labels:
+      - traefik.enable=true
       - traefik.http.routers.tp-archiapp.rule=Host(`tp-archiapp.veyrenc.xyz`)
       - traefik.http.routers.tp-archiapp.entrypoints=websecure
       - traefik.http.routers.tp-archiapp.tls=true
