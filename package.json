@@ -16,7 +16,8 @@
   "main": "serveur/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "APP_DIR=$PWD node serveur/index.js"
+    "dev": "APP_DIR=$PWD node serveur/index.js",
+    "prod": "node serveur/index.js"
   },
   "dependencies": {
     "express": "^4.21.2"
