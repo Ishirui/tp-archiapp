@@ -1,7 +1,7 @@
 msgs = [
   {
     author: "Anonymous",
-    time: Date("07-03-2025T16:44:00"),
+    time: "07-03-2025T16:44:00",
     msg: "Hello, World!",
   },
 ];
@@ -10,15 +10,17 @@ function updateMessages(messages) {
   let messageList = document.getElementById("messageList");
   messageList.innerHTML = "";
   messages.forEach((message) => {
-    let messageTime = new Date(message.time).toLocaleString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    }).replace(",", ""); // Format: 01/01/2021, 00:00:00
-    
+    let messageTime = new Date(message.time)
+      .toLocaleString("en-GB", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      })
+      .replace(",", ""); // Format: 01/01/2021, 00:00:00
+
     let li = document.createElement("li");
     li.classList.add("messageBox");
 
@@ -43,7 +45,7 @@ function addMessage() {
   let author = document.getElementById("authorInputBox").value;
   msgs.push({
     author: author,
-    time: Date(),
+    time: new Date().toISOString(),
     msg: message,
   });
   updateMessages(msgs);

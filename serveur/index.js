@@ -14,10 +14,19 @@ app.use(function (req, res, next) {
 // Ici faut faire faire quelque chose à notre app...
 // On va mettre les "routes"  == les requêtes HTTP acceptéés par notre application.
 
-var allMsgs = ["Hello World", "foobar", "CentraleSupélec Forever !"]; // tableau pour stocker les messages
+var allMsgs = [
+  {
+    author: "Anonymous",
+    time: "07-03-2025T16:44:00",
+    msg: "Hello, World!",
+  },
+]; // tableau pour stocker les messages
 
 // Middleware pour envoyer les fichiers statiques sur la route /
 app.use(express.static(`${process.env.APP_DIR}/client`));
+
+// Middleware pour automatiquement parser le JSON dans les requêtes POST
+app.use(express.json());
 
 app.get("/msg/get/*", function (req, res) {
   const messageId = parseInt(req.url.substring(9));
@@ -36,10 +45,27 @@ app.get("/msg/getAll", function (req, res) {
   res.json(allMsgs);
 });
 
-app.post("/msg/add/*", function (req, res) {
-  const message = decodeURIComponent(req.url.substring(9));
-  allMsgs.push(message);
-  res.json(allMsgs.length - 1);
+app.post("/msg/add", function (req, res) {
+  let newMsg = req.body;
+  if (!newMsg) {
+    res.status(200).json({ err: "Invalid JSON Body" });
+  }
+
+  if (
+    !newMsg?.author ||
+    !newMsg?.msg ||
+    newMsg.author === "" ||
+    newMsg.msg === "" ||
+    !newMsg?.time ||
+    newMsg.time === ""
+  ) {
+    res.status(400).json({ err: "author, msg and time fields are required." });
+    return;
+  }
+
+  // On filtre les champs inutiles éventuellement présents dans le corps de la requête.
+  allMsgs.push({ author: newMsg.author, msg: newMsg.msg, time: newMsg.time });
+  res.status(201); // 201 = Created
 });
 
 app.listen(8080); //commence à accepter les requêtes
