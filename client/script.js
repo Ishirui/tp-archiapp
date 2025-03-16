@@ -48,10 +48,16 @@ function updateMessagesView(messages) {
 function addMessage() {
   let message = document.getElementById("messageInputBox").value;
   let author = document.getElementById("authorInputBox").value;
-  msgs.push({
-    author: author,
-    time: new Date().toISOString(),
-    msg: message,
+  fetch("/msg/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      author: author,
+      time: new Date().toISOString(),
+      msg: message,
+    }),
   });
   getMessages();
 }
@@ -69,3 +75,6 @@ function toggleDarkMode() {
   let messageInputBox = document.getElementById("messageInputBox");
   messageInputBox.classList.toggle("darkMode");
 }
+
+// S'exécute au chargement de la page
+getMessages();
