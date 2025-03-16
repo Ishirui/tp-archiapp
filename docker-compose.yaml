@@ -3,8 +3,24 @@ version: '3.8'
 services:
   tp-archiapp:
     container_name: tp-archiapp
+    networks:
+      - proxied
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    labels:
+      - traefik.http.routers.tp-archiapp.rule=Host(`tp-archiapp.veyrenc.xyz`)
+      - traefik.http.routers.tp-archiapp.entrypoints=websecure
+      - traefik.http.routers.tp-archiapp.tls=true
+      - traefik.http.routers.tp-archiapp.tls.certresolver=myresolver
+      - traefik.http.routers.tp-archiapp.tls.domains[0].main=veyrenc.xyz
+      - traefik.http.routers.tp-archiapp.tls.domains[0].sans=\*.veyrenc.xyz
+
+    restart: always
+
+networks:
+  proxied:
+    name: proxied
+    external: true
