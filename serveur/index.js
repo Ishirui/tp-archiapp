@@ -16,6 +16,9 @@ app.use(function (req, res, next) {
 
 var allMsgs = ["Hello World", "foobar", "CentraleSupélec Forever !"]; // tableau pour stocker les messages
 
+// Middleware pour envoyer les fichiers statiques sur la route /
+app.use(express.static(`${process.env.APP_DIR}/client`));
+
 app.get("/msg/get/*", function (req, res) {
   const messageId = parseInt(req.url.substring(9));
   if (isNaN(messageId) || messageId < 0 || messageId >= allMsgs.length) {
