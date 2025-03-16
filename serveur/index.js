@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 var allMsgs = [
   {
     author: "Anonymous",
-    time: "07-03-2025T16:44:00",
+    time: "2025-03-16T18:46:58.034Z",
     msg: "Hello, World!",
   },
 ]; // tableau pour stocker les messages
