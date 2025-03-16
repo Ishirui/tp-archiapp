@@ -28,21 +28,32 @@ app.use(express.static(`${process.env.APP_DIR}/client`));
 // Middleware pour automatiquement parser le JSON dans les requêtes POST
 app.use(express.json());
 
-app.get("/msg/get/*", function (req, res) {
-  const messageId = parseInt(req.url.substring(9));
-  if (isNaN(messageId) || messageId < 0 || messageId >= allMsgs.length) {
-    res.json({ code: 0 });
+// On check le paramètre id plutôt qu'une route /msg/:id
+app.get("/msg/get", function (req, res) {
+  if (!req.query?.id) {
+    res.status(400).json({ err: "Unspecified message number" }); // 400 = Bad Request, requête mal formée
     return;
   }
-  res.json({ code: 1, message: allMsgs[messageId] });
+
+  const messageId = parseInt(req.query.id);
+  if (isNaN(messageId) || messageId < 0) {
+    res.status(400).json({ err: "Invalid message number" }); // 400 = Bad Request, requête mal formée
+    return;
+  }
+
+  if (messageId >= allMsgs.length) {
+    res.status(404).json({ err: "Message does not exist" }); // 404 = Not Found, ressource n'existe pas
+    return;
+  }
+  res.status(200).json(allMsgs[messageId]);
 });
 
 app.get("/msg/nber", function (req, res) {
-  res.json(allMsgs.length); // Peut-être qu'on devrait renvoyer un objet JSON avec le code plutôt qu'un nombre, pour garder un format uniforme
+  res.status(200).json(allMsgs.length);
 });
 
 app.get("/msg/getAll", function (req, res) {
-  res.json(allMsgs);
+  res.status(200).json(allMsgs);
 });
 
 app.post("/msg/add", function (req, res) {
